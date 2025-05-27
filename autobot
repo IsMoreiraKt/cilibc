@@ -1,0 +1,102 @@
+#!/usr/bin/env python3
+
+"""
+autobot: Build automation script for cilibc runtime objects.
+
+This script compiles all assembly (.S) and C (.c) files found in the
+arch/{ARCH}/crt and src/crt directories, placing the resulting object files
+in the __build directory at the project root.
+
+Usage:
+    python autobot [-v|--verbose]
+"""
+
+import os
+import subprocess
+import argparse
+from pathlib import Path
+from typing import List, Any
+
+BUILD_DIR: Path = Path("__build")
+ARCH: str = "x86_64"
+COMPILER: str = os.environ.get("CC", "gcc")
+CFLAGS: List[str] = [
+    "-c",
+    "-O0",
+    "-nostdlib",
+    "-fno-builtin",
+    "-fno-stack-protector",
+    "-fno-PIC",
+    "-fno-ident",
+    "-fno-asynchronous-unwind-tables",
+    "-Wall",
+    "-Wextra",
+]
+
+
+def run(cmd: List[str], verbose: bool = False) -> None:
+    """
+    Run a shell command.
+
+    Args:
+        cmd: List of command arguments.
+        verbose: If True, prints the command and shows all output.
+    Raises:
+        subprocess.CalledProcessError: If the command fails.
+    """
+    if verbose:
+        print(">>", " ".join(cmd))
+        subprocess.run(cmd, check=True)
+    else:
+        subprocess.run(
+            cmd, check=True, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL
+        )
+
+
+def compile_crt(verbose: bool = False) -> None:
+    """
+    Compile CRT (C runtime) assembly and C source files.
+
+    - Assembles all .S files in arch/{ARCH}/crt to .o files in __build.
+    - Compiles all .c files in src/crt to _c.o files in __build.
+
+    Args:
+        verbose: If True, shows all compiler output.
+    """
+    BUILD_DIR.mkdir(exist_ok=True)
+
+    crt_asm = Path("arch") / ARCH / "crt"
+    for file in crt_asm.glob("*.S"):
+        dst = BUILD_DIR / file.with_suffix(".o").name
+        run([COMPILER, *CFLAGS, str(file), "-o", str(dst)], verbose)
+
+    crt_c = Path("src") / "crt"
+    for file in crt_c.glob("*.c"):
+        dst = BUILD_DIR / (file.stem + "_c.o")
+        run([COMPILER, *CFLAGS, str(file), "-o", str(dst)], verbose)
+
+
+def parse_args() -> argparse.Namespace:
+    """
+    Parse command-line arguments.
+
+    Returns:
+        argparse.Namespace: Parsed arguments.
+    """
+    parser = argparse.ArgumentParser(description="Build script for cilibc runtime")
+    parser.add_argument(
+        "-v", "--verbose", action="store_true", help="show all compiler output"
+    )
+    return parser.parse_args()
+
+
+def main() -> None:
+    """
+    Main entry point for the build script.
+    """
+    args = parse_args()
+    compile_crt(verbose=args.verbose)
+
+
+if __name__ == "__main__":
+    main()
