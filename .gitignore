@@ -1,0 +1,40 @@
+##########################################################################
+#                                                                        #
+#                              Binary files                              #
+#                                                                        #
+##########################################################################
+*.o                  # Object files
+*.a                  # Static libraries
+*.so                 # Shared libraries
+*.dll                # Dynamic link libraries
+
+##########################################################################
+#                                                                        #
+#                            Executable files                            #
+#                                                                        #
+##########################################################################
+*.out                # Output files
+*.exe                # Executable files
+*.bin                # Binary files
+*.elf                # Executable and Linkable Format files
+*.eelf               # Extended Executable and Linkable Format files
+
+##########################################################################
+#                                                                        #
+#                              Python files                              #
+#                                                                        #
+##########################################################################
+*.pyc                # Compiled Python files
+*.pyo                # Optimized Python files
+*.pyd                # Python dynamic modules
+__pycache__/         # Python cache directories
+
+##########################################################################
+#                                                                        #
+#                                IDE files                               #
+#                                                                        #
+##########################################################################
+.vscode/             # Visual Studio Code settings
+.idea/               # JetBrains IDE settings
+*.sublime-workspace  # Sublime Text workspace files
+*.sublime-project    # Sublime Text project files
