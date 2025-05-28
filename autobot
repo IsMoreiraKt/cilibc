@@ -1,26 +1,43 @@
 #!/usr/bin/env python3
-
 """
-autobot: Build automation script for cilibc runtime objects.
+@file autobot
+@brief Main build automation script for cilibc.
 
-This script compiles all assembly (.S) and C (.c) files found in the
-arch/{ARCH}/crt and src/crt directories, placing the resulting object files
-in the __build directory at the project root.
-
-Usage:
-    python autobot [-v|--verbose]
+This script serves as the entry point for building, testing, and configuring cilibc.
+It parses command-line arguments, sets up the build context, and dispatches actions
+such as architecture selection and build configuration.
 """
-from scripts.argparse import parse_args
-from scripts.compiler import compile_crt
+from argparse import Namespace
+from scripts.ArgParser import ArgParser
+from scripts.Arch import setCpuArch
+from scripts.Logger import Logger
+from scripts.BuildContext import BuildContext
 
 
-def main() -> None:
+def dispatcher(arguments: Namespace, context: BuildContext) -> None:
     """
-    Main entry point for the build script.
+    Dispatch actions based on parsed command-line arguments.
+
+    Args:
+        arguments (Namespace): Parsed command-line arguments.
+        context (BuildContext): Build context to update and use.
     """
-    args = parse_args()
-    compile_crt(verbose=args.verbose)
+    if arguments.architecture:
+        setCpuArch(arguments.architecture, context)
 
 
 if __name__ == "__main__":
-    main()
+    # Parse command-line arguments
+    argumentParser: ArgParser = ArgParser()
+    arguments: Namespace = argumentParser.parse()
+
+    # Initialize logger
+    logger: Logger = Logger()
+
+    # Set up build context
+    context: BuildContext = BuildContext()
+    context.verbose = arguments.verbose
+    context.logger = logger
+
+    # Dispatch actions based on arguments
+    dispatcher(arguments, context)

@@ -28,6 +28,7 @@ _logLevels: dict[str, int] = {
     "critical": CRITICAL,
 }
 
+
 class Logger:
     """
     Logger utility class for cilibc scripts.
