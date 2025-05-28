@@ -35,7 +35,7 @@ _start:
   mov (%rsp), %rsi /* argc -> rsi (2nd arg to __libc_start_main) */
   lea 8(%rsp), %rdx /* argv -> rdx (3rd arg to __libc_start_main) */
 
-  /* envp and auxv are not passed here; handled in C if needed */
+  /* envp and auxv are not passed here */
   andq $-16, %rsp /* Align stack pointer to 16 bytes */
 
   /* Prepare arguments for __libc_start_main:
@@ -59,6 +59,14 @@ _start:
   lea _init(%rip), %r9
   lea _fini(%rip), %r10
   lea _rtld_fini(%rip), %r11
+
+  /**
+   * Verify if main is defined.
+   * If main is not defined, we will exit with code 127.
+   * If main is defined, we will call __libc_start_main.
+   */
+  test %rdi, %rdi
+  je .no_main
 
   call __libc_start_main
 
