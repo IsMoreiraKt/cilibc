@@ -1,7 +1,16 @@
 /**
  * File: arch/x86_64/crt/crt1.S
  * Author: Ismael Moreira
- * Purpose: Entry point for x86_64 architecture.
+ * Purpose: Entry point for x86_64 ELF binaries.
+ *
+ * Stack layout at entry:
+ *   [rsp + 0x00]: argc (int)
+ *   [rsp + 0x08]: argv[0] (char *)
+ *   ...
+ *   [rsp + 8*argc]: NULL (end of argv)
+ *   [rsp + 8*(argc+1)]: envp[0] (char *)
+ *   ...
+ *   [rsp + ...]: auxv[0] (Elf64_auxv_t)
  */
 .text
 .global _start
@@ -9,7 +18,7 @@
 /**
  * These symbols are weakly defined to allow the linker to override them
  * with user-defined functions for initialization and finalization.
- * And they are hidden to prevent symbol conflicts in shared libraries.
+ * They are hidden to prevent symbol conflicts in shared libraries.
  */
 .weak _init
 .weak _fini
@@ -21,71 +30,42 @@
 
 _start:
   xor %rbp, %rbp /* Clear frame pointer for ABI compliance */
-  mov %rdx, %r9 /* Save stack_end (original rdx) in r9 */
 
-  /**
-   * Retrieve argc and argv
-   */
-  mov (%rsp), %rsi /* argc -> rsi (2nd argument to __libc_start_main) */
-  lea 8(%rsp), %rdx /* argv -> rdx (3rd argument: &argv[0]) */
+  /* Retrieve argc and argv from stack */
+  mov (%rsp), %rsi /* argc -> rsi (2nd arg to __libc_start_main) */
+  lea 8(%rsp), %rdx /* argv -> rdx (3rd arg to __libc_start_main) */
 
-  /**
-   * Calculate envp pointer: envp = argv + argc + 1
-   */
-  lea 8(%rsi, %rdx, 1), %rbx /* rbx = envp */
+  /* envp and auxv are not passed here; handled in C if needed */
+  andq $-16, %rsp /* Align stack pointer to 16 bytes */
 
-  /**
-   * Find auxv:
-   * envp is a NULL-terminated array, so scan forward until NULL,
-   * then auxv starts at the next address.
-   */
-  mov %rbx, %rax /* rax = envp */
-
-.find_auxv:
-  mov (%rax), %rcx /* Load pointer at envp[i] */
-  test %rcx, %rcx /* Check for NULL terminator */
-  je .found_auxv
-  add $8, %rax /* Advance to next envp entry */
-  jmp .find_auxv
-
-.found_auxv:
-  add $8, %rax /* auxv starts after NULL */
-  mov %rax, %r12 /* Save auxv pointer in r12 */
-
-  /* Align stack and reserve space for return address */
-  andq $-16, %rsp
-  sub $8, %rsp
-
-  /**
-   * Prepare arguments for __libc_start_main:
+  /* Prepare arguments for __libc_start_main:
    * rdi = main,
    * rsi = argc,
    * rdx = argv,
-   * rcx = _init,
-   * r8 = _fini,
-   * r9 = stack_end,
-   * r10 = _rtld_fini
+   * rcx = envp (NULL, calculated by __libc_start_main),
+   * r8 = auxv (NULL, calculated by __libc_start_main),
+   * r9 = _init,
+   * r10 = _fini,
+   * r11 = _rtld_fini
    */
-  lea _init(%rip), %rcx
-  lea _fini(%rip), %r8
-  lea _rtld_fini(%rip), %r10
-  mov $main, %rdi
+  mov $main, %rdi /* main function pointer */
+  mov (%rsp), %rsi /* argc */
 
-  test %rdi, %rdi
-  je .no_main
+  lea 8(%rsp), %rdx /* argv */
+
+  xor %rcx, %rcx /* envp = NULL */
+  xor %r8, %r8 /* auxv = NULL */
+
+  lea _init(%rip), %r9
+  lea _fini(%rip), %r10
+  lea _rtld_fini(%rip), %r11
 
   call __libc_start_main
 
 .hang:
-  /**
-   * Infinite loop if __libc_start_main returns
-   */
-  jmp .hang
+  jmp .hang /* Infinite loop if __libc_start_main returns */
 
 .no_main:
-  /**
-   * Exit code 127 if main is missing
-   */
-  mov $127, %edi
+  mov $127, %edi /* Exit code 127 if main is missing */
   andq $-16, %rsp
   call _exit
