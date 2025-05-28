@@ -20,69 +20,72 @@
 .hidden _rtld_fini
 
 _start:
-  /**
-   * Clear frame pointer for ABI compliance
-   */
-  xor %rbp, %rbp
+  xor %rbp, %rbp /* Clear frame pointer for ABI compliance */
+  mov %rdx, %r9 /* Save stack_end (original rdx) in r9 */
 
   /**
-   * Move 6th argument to r9, usually NULL or atexit registration pointer
+   * Retrieve argc and argv
    */
-  mov %rdx, %r9 /* 6th arg from initial rdx (stack_end pointer) */
+  mov (%rsp), %rsi /* argc -> rsi (2nd argument to __libc_start_main) */
+  lea 8(%rsp), %rdx /* argv -> rdx (3rd argument: &argv[0]) */
 
-  /* Stack layout at entry:
-   * [rsp] = argc
-   * [rsp + 8] = argv[0]
-   * ...
-   * Extract argc into rsi
+  /**
+   * Calculate envp pointer: envp = argv + argc + 1
    */
-  pop %rsi /* Pop the argument count into rsi */
+  lea 8(%rsi, %rdx, 1), %rbx /* rbx = envp */
 
-  /** 
-   * Set argv pointer in rdx
+  /**
+   * Find auxv:
+   * envp is a NULL-terminated array, so scan forward until NULL,
+   * then auxv starts at the next address.
    */
-  mov %rsp, %rdx /* rdx now points to argv[0] */
+  mov %rbx, %rax /* rax = envp */
 
-  /** 
-   * Align stack pointer to 16 bytes for ABI compliance
-   */
+.find_auxv:
+  mov (%rax), %rcx /* Load pointer at envp[i] */
+  test %rcx, %rcx /* Check for NULL terminator */
+  je .found_auxv
+  add $8, %rax /* Advance to next envp entry */
+  jmp .find_auxv
+
+.found_auxv:
+  add $8, %rax /* auxv starts after NULL */
+  mov %rax, %r12 /* Save auxv pointer in r12 */
+
+  /* Align stack and reserve space for return address */
   andq $-16, %rsp
-  sub $8, %rsp /* Reserve space for return address */
+  sub $8, %rsp
 
   /**
-   * Prepare arguments for __libc_start_main
+   * Prepare arguments for __libc_start_main:
+   * rdi = main,
+   * rsi = argc,
+   * rdx = argv,
+   * rcx = _init,
+   * r8 = _fini,
+   * r9 = stack_end,
+   * r10 = _rtld_fini
    */
-  lea _init(%rip), %rcx /* init function pointer (4th arg) */
-  lea _fini(%rip), %r8 /* fini function pointer (5th arg) */
-  lea _rtld_fini(%rip), %r10 /* rtld_fini function pointer (6th arg) */
+  lea _init(%rip), %rcx
+  lea _fini(%rip), %r8
+  lea _rtld_fini(%rip), %r10
+  mov $main, %rdi
 
-  /**
-   * Load address of main function explicitly
-   */
-  mov $main, %rdi /* main function pointer (1st arg) */
-
-  /**
-   * Tests if the main function is defined.
-   * If not defined, jump to error.
-   */
   test %rdi, %rdi
-  je 2f
+  je .no_main
 
-  /**
-   * Call libc entry point, which calls main internally
-   */
   call __libc_start_main
 
-/**
- * In case exit fails, loop forever
- */
-1:
-  jmp 1b
+.hang:
+  /**
+   * Infinite loop if __libc_start_main returns
+   */
+  jmp .hang
 
-/**
- * If main is not defined, exit with error code 127
- */
-2:
-  mov $127, %edi /* Exit code 127 */
-  andq $-16, %rsp /* Ensure stack is aligned */
+.no_main:
+  /**
+   * Exit code 127 if main is missing
+   */
+  mov $127, %edi
+  andq $-16, %rsp
   call _exit
