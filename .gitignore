@@ -3,46 +3,65 @@
 #                             BUILD DIRECTORY                            #
 #                                                                        #
 ##########################################################################
-__build/             # Build directory for compiled files
-__auto_docs/         # Auto-generated documentation directory
+# Build directory for compiled files
+__build/
+# Auto-generated documentation directory
+__auto_docs/
 
 ##########################################################################
 #                                                                        #
 #                              Binary files                              #
 #                                                                        #
 ##########################################################################
-*.o                  # Object files
-*.a                  # Static libraries
-*.so                 # Shared libraries
-*.dll                # Dynamic link libraries
+# Object files
+*.o
+# Static libraries
+*.a
+# Shared libraries
+*.so
+# Dynamic link libraries
+*.dll
 
 ##########################################################################
 #                                                                        #
 #                            Executable files                            #
 #                                                                        #
 ##########################################################################
-*.out                # Output files
-*.exe                # Executable files
-*.bin                # Binary files
-*.elf                # Executable and Linkable Format files
-*.eelf               # Extended Executable and Linkable Format files
+# Output files
+*.out
+# Executable files
+*.exe
+# Binary files
+*.bin
+# Executable and Linkable Format files
+*.elf
+# Extended Executable and Linkable Format files
+*.eelf
 
 ##########################################################################
 #                                                                        #
 #                              Python files                              #
 #                                                                        #
 ##########################################################################
-*.pyc                # Compiled Python files
-*.pyo                # Optimized Python files
-*.pyd                # Python dynamic modules
-__pycache__/         # Python cache directories
+# Compiled Python files
+*.pyc
+# Optimized Python files
+*.pyo
+# Python dynamic modules
+*.pyd
+# Python cache directories
+__pycache__/
 
 ##########################################################################
 #                                                                        #
 #                                IDE files                               #
 #                                                                        #
 ##########################################################################
-.vscode/             # Visual Studio Code settings
-.idea/               # JetBrains IDE settings
-*.sublime-workspace  # Sublime Text workspace files
-*.sublime-project    # Sublime Text project files
+# Visual Studio Code settings
+.vscode/
+# JetBrains IDE settings
+.idea/
+# Sublime Text workspace files
+*.sublime-workspace
+# Sublime Text project files
+*.sublime-project
