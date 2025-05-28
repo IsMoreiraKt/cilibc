@@ -15,6 +15,7 @@
  *
  * If this function is called, the test has failed.
  */
-int __no_compile() {
+int __no_compile()
+{
     return 42;
 }

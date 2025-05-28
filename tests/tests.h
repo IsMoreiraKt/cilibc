@@ -1,7 +1,7 @@
 /**
  * @file tests/tests.h
  * @brief Auxiliary utility functions for cilibc tests.
- * 
+ *
  * @author Ismael Moreira
  */
 #ifndef __CILIBC__TESTS__
