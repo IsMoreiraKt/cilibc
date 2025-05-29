@@ -76,9 +76,9 @@ class ArgParser:
         self.argument_parser.add_argument(
             "-t",
             "--test",
-            nargs="*",
-            default=["all"],
-            help="Run tests. Optionally specify a test name or path, or use 'all' to run all tests (default).",
+            nargs="?",
+            const="all",
+            help="Run specific test or test group",
         )
 
     def parse(self) -> Namespace:
