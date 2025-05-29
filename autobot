@@ -3,27 +3,80 @@
 @file autobot
 @brief Main build automation script for cilibc.
 
-This script serves as the entry point for building, testing, and configuring cilibc.
-It parses command-line arguments, sets up the build context, and dispatches actions
-such as architecture selection and build configuration.
+This script serves as the entry point for building, testing, and
+configuring cilibc. It parses command-line arguments, sets up the
+build context, and dispatches actions such as architecture
+selection, compilation, and test execution.
+
+Usage:
+    python autobot [options]
+
+Options:
+    See scripts/ArgParser.py for all available command-line
+    arguments.
+
+Workflow:
+    - Parses command-line arguments.
+    - Initializes the logger and build context.
+    - Sets up compiler and linker flags.
+    - Selects the target architecture.
+    - Compiles cilibc sources.
+    - Optionally runs tests if requested.
 """
 from argparse import Namespace
+from sys import exit
 from scripts.ArgParser import ArgParser
 from scripts.Arch import setCpuArch
 from scripts.Logger import Logger
 from scripts.BuildContext import BuildContext
+from scripts.TestCategories import ValidTestArguments
+from scripts.TestRunner import TestRunner
+from scripts.Compiler import CCompiler
 
 
 def dispatcher(arguments: Namespace, context: BuildContext) -> None:
     """
     Dispatch actions based on parsed command-line arguments.
 
+    Sets up the compiler, flags, architecture, and triggers compilation and testing.
+
     Args:
         arguments (Namespace): Parsed command-line arguments.
         context (BuildContext): Build context to update and use.
     """
-    if arguments.architecture:
-        setCpuArch(arguments.architecture, context)
+    # Initialize C Compiler
+    ccompiler: CCompiler = CCompiler()
+
+    # Set compiler
+    if arguments.c_compiler:
+        context.compiler = arguments.c_compiler
+    else:
+        context.compiler = "gcc"
+
+    # Set compiler and linker flags
+    context.compilerFlags = arguments.c_flags
+    ccompiler.setCCFlags(context)
+
+    context.linkerFlags = arguments.ld_flags
+    ccompiler.setLinkerFlags(context)
+
+    # Set architecture
+    setCpuArch(arguments.architecture, context)
+
+    # Compile sources
+    ccompiler.compile(context)
+
+    # Run tests if requested
+    if arguments.test:
+        if arguments.test in ValidTestArguments:
+            context.testList = arguments.test
+            testRunner: TestRunner = TestRunner()
+            testRunner.run(context, ccompiler)
+        else:
+            context.logger.log(
+                "error", f"The test variable {arguments.test} is invalid"
+            )
+            exit(1)
 
 
 if __name__ == "__main__":
