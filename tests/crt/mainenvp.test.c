@@ -29,26 +29,26 @@ int main(int argc, char** argv, char** envp)
 {
     const char* argc_str = __convert_to_cstring(argc);
 
-    __print("Argc: ", 7);
+    __print("Argc: ", 6);
     __print(argc_str, __strlen(argc_str));
-    __print("\n", 2);
+    __print("\n", 1);
 
-    __print("Argv: ", 7);
+    __print("Argv: ", 6);
 
     for (int i = 0; i < argc; i++) {
-        __print("argv[", 6);
-        __print(__convert_to_cstring(i), 2);
-        __print("]: ", 4);
+        __print("argv[", 5);
+        __print(__convert_to_cstring(i), __strlen(__convert_to_cstring(i)));
+        __print("]: ", 3);
         __print(argv[i], __strlen(argv[i]));
-        __print("\n", 2);
+        __print("\n", 1);
     }
 
     for (int i = 0; envp[i] != (void*)0; i++) {
-        __print("envp[", 6);
-        __print(__convert_to_cstring(i), 2);
-        __print("]: ", 4);
+        __print("envp[", 5);
+        __print(__convert_to_cstring(i), __strlen(__convert_to_cstring(i)));
+        __print("]: ", 3);
         __print(envp[i], __strlen(envp[i]));
-        __print("\n", 2);
+        __print("\n", 1);
     }
 
     return 0;
