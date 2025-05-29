@@ -16,10 +16,11 @@ import subprocess
 
 class TestRunner:
     """
-    TestRunner handles the compilation, linking, and execution of cilibc tests.
+    TestRunner handles the compilation and execution of cilibc tests.
 
     It can run all test suites or a specific test, compiling the necessary sources
-    and invoking the associated Python test scripts for validation.
+    and invoking the associated Python test scripts for validation. The linking
+    phase is handled separately and is not performed in this class.
     """
 
     def __init__(self) -> None:
@@ -30,7 +31,7 @@ class TestRunner:
 
     def run(self, context: BuildContext, cCompiler: CCompiler) -> None:
         """
-        Compile, link, and execute the requested tests.
+        Compile and execute the requested tests.
 
         If context.testList is "all", iterates through all valid test categories,
         compiling and running each one. Otherwise, compiles and runs the specified test.
@@ -45,7 +46,6 @@ class TestRunner:
                 context.testList = vta
 
                 cCompiler.compileTests(context)
-                cCompiler.link(context, f"__build/test/{vta}")
 
                 # Run the corresponding Python test script for this category
                 cmd: List[str] = ["python3", f"./scripts/testing/{vta}.py"]
@@ -55,7 +55,6 @@ class TestRunner:
             context.testList = tempName
 
             cCompiler.compileTests(context)
-            cCompiler.link(context, f"__build/test/{tempName}")
 
             cmd: List[str] = ["python3", f"./scripts/testing/{tempName}.py"]
             subprocess.run(cmd, check=True)
