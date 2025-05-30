@@ -2,13 +2,11 @@
 <img 
   src="./assets/cilibc-logo.png"
   alt="CILibc Logo"
-  width="300"
+  width="500"
 />
 </div>
 
-# CILibc - Fast, Controllable, and Architecture-Aware C Runtime
-
-A small, modular C standard library designed for performance, system-level control, and bare-metal environments.
+# Fast, Controllable, and Architecture-Aware C Runtime
 
 > [!IMPORTANT]
 > This project is under active development. It is not yet ready for production or critical systems.
