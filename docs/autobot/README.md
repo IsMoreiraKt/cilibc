@@ -1,5 +1,6 @@
 # Autobot Commands
 
+- [autobot architecture](./autobot_architecture.md)
 - [autobot bench](./autobot_bench.md)
 - [autobot compile](./autobot_compile.md)
 - [autobot help](./autobot_help.md)
