@@ -1,0 +1,6 @@
+daysUntilClose: 14
+responseRequiredLabel: more-information-needed
+closeComment: >
+  This issue has been automatically closed due to lack of response from the original reporter.
+  Without the necessary information (environment details, test steps, logs), we cannot investigate or reproduce the problem.
+  If you can provide more context, feel free to comment or open a new issue with the relevant details.
