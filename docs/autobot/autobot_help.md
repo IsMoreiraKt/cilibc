@@ -22,3 +22,8 @@ autobot --help
 ```shell
 autobot --help test
 ```
+
+### Options
+
+- architecture
+- test

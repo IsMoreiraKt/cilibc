@@ -10,7 +10,7 @@ The following flags are always included and cannot be modified:
 
 - **-nostdlib**: disables standard system libraries
 - **-no-pie**: disables position-independent executable generation
-- **-e _start**: sets the program entry point to _start
+- **-e \_start**: sets the program entry point to \_start
 
 Any additional flags passed via **--ld-flags** are appended after the required ones.
 
@@ -20,4 +20,3 @@ Any additional flags passed via **--ld-flags** are appended after the required o
 ./autobot --ld-flags -static
 ./autobot -lfd -z max-page-size=0x1000
 ```
-

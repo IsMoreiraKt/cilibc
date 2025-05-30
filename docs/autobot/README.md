@@ -7,5 +7,6 @@
 - [autobot compile](./autobot_compile.md)
 - [autobot help](./autobot_help.md)
 - [autobot ldflags](./autobot_ldflags.md)
+- [autobot test](./autobot_test.md)
 - [autobot versbose](./autobot_verbose.md)
 - [autobot version](./autobot_version.md)
