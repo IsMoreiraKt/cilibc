@@ -33,4 +33,58 @@ typedef signed long intptr_t;
  */
 typedef unsigned long uintptr_t;
 
+/**
+ * @def INT64_MIN
+ * @brief Minimum value for a signed 64-bit integer.
+ */
+#define INT64_MIN (-0x8000000000000000L)
+
+/**
+ * @def INT64_MAX
+ * @brief Maximum value for a signed 64-bit integer.
+ */
+#define INT64_MAX (0x7FFFFFFFFFFFFFFFL)
+
+/**
+ * @def UINT64_MAX
+ * @brief Maximum value for an unsigned 64-bit integer.
+ */
+#define UINT64_MAX (0xFFFFFFFFFFFFFFFFUL)
+
+/**
+ * @def INTPTR_MIN
+ * @brief Minimum value for a signed integer type capable of holding a pointer.
+ */
+#define INTPTR_MIN INT64_MIN
+
+/**
+ * @def INTPTR_MAX
+ * @brief Maximum value for a signed integer type capable of holding a pointer.
+ */
+#define INTPTR_MAX INT64_MAX
+
+/**
+ * @def INTPTR_MAX
+ * @brief Maximum value for a signed integer type capable of holding a pointer.
+ */
+#define UINTPTR_MAX UINTPTR_MAX
+
+/**
+ * @def INTMAX_MIN
+ * @brief Minimum value for the largest supported signed integer type.
+ */
+#define INTMAX_MIN INT64_MIN
+
+/**
+ * @def INTMAX_MAX
+ * @brief Maximum value for the largest supported signed integer type.
+ */
+#define INTMAX_MAX INT64_MAX
+
+/**
+ * @def UINTMAX_MAX
+ * @brief Maximum value for the largest supported unsigned integer type.
+ */
+#define UINTMAX_MAX UINT64_MAX
+
 #endif // __CILIBC__X86_64__STANDARD_INTEGER__
