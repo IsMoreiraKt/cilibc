@@ -21,4 +21,16 @@ typedef signed long _Int64;
  */
 typedef unsigned long _Uint64;
 
+/**
+ * @typedef intptr_t
+ * @brief Signed integer type capable of holding a pointer.
+ */
+typedef signed long intptr_t;
+
+/**
+ * @typedef uintptr_t
+ * @brief Unsigned integer type capable of holding a pointer.
+ */
+typedef unsigned long uintptr_t;
+
 #endif // __CILIBC__X86_64__STANDARD_INTEGER__
