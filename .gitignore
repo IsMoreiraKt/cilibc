@@ -1,0 +1,67 @@
+##########################################################################
+#                                                                        #
+#                             BUILD DIRECTORY                            #
+#                                                                        #
+##########################################################################
+# Build directory for compiled files
+__build/
+# Auto-generated documentation directory
+__auto_docs/
+
+##########################################################################
+#                                                                        #
+#                              Binary files                              #
+#                                                                        #
+##########################################################################
+# Object files
+*.o
+# Static libraries
+*.a
+# Shared libraries
+*.so
+# Dynamic link libraries
+*.dll
+
+##########################################################################
+#                                                                        #
+#                            Executable files                            #
+#                                                                        #
+##########################################################################
+# Output files
+*.out
+# Executable files
+*.exe
+# Binary files
+*.bin
+# Executable and Linkable Format files
+*.elf
+# Extended Executable and Linkable Format files
+*.eelf
+
+##########################################################################
+#                                                                        #
+#                              Python files                              #
+#                                                                        #
+##########################################################################
+# Compiled Python files
+*.pyc
+# Optimized Python files
+*.pyo
+# Python dynamic modules
+*.pyd
+# Python cache directories
+__pycache__/
+
+##########################################################################
+#                                                                        #
+#                                IDE files                               #
+#                                                                        #
+##########################################################################
+# Visual Studio Code settings
+.vscode/
+# JetBrains IDE settings
+.idea/
+# Sublime Text workspace files
+*.sublime-workspace
+# Sublime Text project files
+*.sublime-project
