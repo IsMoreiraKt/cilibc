@@ -31,13 +31,6 @@
 _start:
   xor %rbp, %rbp /* Clear frame pointer for ABI compliance */
 
-  /* Retrieve argc and argv from stack */
-  mov (%rsp), %rsi /* argc -> rsi (2nd arg to __libc_start_main) */
-  lea 8(%rsp), %rdx /* argv -> rdx (3rd arg to __libc_start_main) */
-
-  /* envp and auxv are not passed here */
-  andq $-16, %rsp /* Align stack pointer to 16 bytes */
-
   /* Prepare arguments for __libc_start_main:
    * rdi = main,
    * rsi = argc,
@@ -49,9 +42,13 @@ _start:
    * r11 = _rtld_fini
    */
   mov $main, %rdi /* main function pointer */
-  mov (%rsp), %rsi /* argc */
 
-  lea 8(%rsp), %rdx /* argv */
+  /* Retrieve argc and argv from stack */
+  mov (%rsp), %rsi /* argc -> rsi (2nd arg to __libc_start_main) */
+  lea 8(%rsp), %rdx /* argv -> rdx (3rd arg to __libc_start_main) */
+
+  /* envp and auxv are not passed here */
+  andq $-16, %rsp /* Align stack pointer to 16 bytes */
 
   xor %rcx, %rcx /* envp = NULL */
   xor %r8, %r8 /* auxv = NULL */
