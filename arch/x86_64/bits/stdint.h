@@ -87,4 +87,16 @@ typedef unsigned long uintptr_t;
  */
 #define UINTMAX_MAX UINT64_MAX
 
+/**
+ * @def PTRDIFF_MIN
+ * @brief Minimum value for the result of subtracting two pointers.
+ */
+#define PTRDIFF_MIN INT64_MIN
+
+/**
+ * @def PTRDIFF_MAX
+ * @brief Maximum value for the result of subtracting two pointers.
+ */
+#define PTRDIFF_MAX INT64_MAX
+
 #endif // __CILIBC__X86_64__STANDARD_INTEGER__
