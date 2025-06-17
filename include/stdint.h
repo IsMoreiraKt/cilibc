@@ -2,7 +2,7 @@
  * @file include/stdint.h
  * @brief Standard integer type definitions.
  *
- * Defines fixed-width integer types for the library.
+ * Defines integer types for the CILibc.
  *
  * @author Ismael Moreira
  */
@@ -60,5 +60,53 @@ typedef unsigned int uint32_t;
  * @brief Unsigned 64-bit integer type.
  */
 typedef _Uint64 uint64_t;
+
+/**
+ * @typedef int_least8_t
+ * @brief Signed integer type with at least 8 bits.
+ */
+typedef int8_t int_least8_t;
+
+/**
+ * @typedef int_least16_t
+ * @brief Signed integer type with at least 16 bits.
+ */
+typedef int16_t int_least16_t;
+
+/**
+ * @typedef int_least32_t
+ * @brief Signed integer type with at least 32 bits.
+ */
+typedef int32_t int_least32_t;
+
+/**
+ * @typedef int_least64_t
+ * @brief Signed integer type with at least 64 bits.
+ */
+typedef int64_t int_least64_t;
+
+/**
+ * @typedef uint_least8_t
+ * @brief Unsigned integer type with at least 8 bits.
+ */
+typedef uint8_t uint_least8_t;
+
+/**
+ * @typedef uint_least16_t
+ * @brief Unsigned integer type with at least 16 bits.
+ */
+typedef uint16_t uint_least16_t;
+
+/**
+ * @typedef uint_least32_t
+ * @brief Unsigned integer type with at least 32 bits.
+ */
+typedef uint32_t uint_least32_t;
+
+/**
+ * @typedef uint_least64_t
+ * @brief Unsigned integer type with at least 64 bits.
+ */
+typedef uint64_t uint_least64_t;
 
 #endif // __CILIBC__STANDARD_INTEGER__
