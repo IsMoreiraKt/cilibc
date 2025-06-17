@@ -109,4 +109,52 @@ typedef uint32_t uint_least32_t;
  */
 typedef uint64_t uint_least64_t;
 
+/**
+ * @typedef int_fast8_t
+ * @brief Fastest signed integer type with at least 8 bits.
+ */
+typedef int8_t int_fast8_t;
+
+/**
+ * @typedef int_fast16_t
+ * @brief Fastest signed integer type with at least 16 bits.
+ */
+typedef int16_t int_fast16_t;
+
+/**
+ * @typedef int_fast32_t
+ * @brief Fastest signed integer type with at least 32 bits.
+ */
+typedef int32_t int_fast32_t;
+
+/**
+ * @typedef int_fast64_t
+ * @brief Fastest signed integer type with at least 64 bits.
+ */
+typedef int64_t int_fast64_t;
+
+/**
+ * @typedef uint_fast8_t
+ * @brief Fastest unsigned integer type with at least 8 bits.
+ */
+typedef uint8_t uint_fast8_t;
+
+/**
+ * @typedef uint_fast16_t
+ * @brief Fastest unsigned integer type with at least 16 bits.
+ */
+typedef uint16_t uint_fast16_t;
+
+/**
+ * @typedef uint_fast32_t
+ * @brief Fastest unsigned integer type with at least 32 bits.
+ */
+typedef uint32_t uint_fast32_t;
+
+/**
+ * @typedef uint_fast64_t
+ * @brief Fastest unsigned integer type with at least 64 bits.
+ */
+typedef uint64_t uint_fast64_t;
+
 #endif // __CILIBC__STANDARD_INTEGER__
