@@ -367,4 +367,16 @@ typedef uint64_t uint_fast64_t;
  */
 #define SIG_ATOMIC_MAX INT32_MAX
 
+/**
+ * @def WCHAR_MIN
+ * @brief Minimum value for a wide character type.
+ */
+#define WCHAR_MIN INT32_MIN
+
+/**
+ * @def WCHAR_MAX
+ * @brief Maximum value for a wide character type.
+ */
+#define WCHAR_MAX INT32_MAX
+
 #endif // __CILIBC__STANDARD_INTEGER__
