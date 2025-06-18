@@ -1,5 +1,5 @@
 /**
- * @file int32min.test.c
+ * @file tests/stdint/int32min.test.c
  * @brief Test for INT32_MIN.
  *
  * This test checks that the INT32_MIN macro is defined correctly
