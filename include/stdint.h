@@ -9,9 +9,9 @@
 #ifndef __CILIBC__STANDARD_INTEGER__
 #define __CILIBC__STANDARD_INTEGER__
 
-#if defined(x86_64)
+#if defined(__x86_64__)
 #include "x86_64/bits/stdint.h"
-#endif // defined(x86_64)
+#endif // defined(__x86_64__)
 
 /**
  * @typedef int8_t
