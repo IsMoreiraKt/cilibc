@@ -379,4 +379,16 @@ typedef uint64_t uint_fast64_t;
  */
 #define WCHAR_MAX INT32_MAX
 
+/**
+ * @def WINT_MIN
+ * @brief Minimum value for a wide character type used in character functions.
+ */
+#define WINT_MIN INT32_MIN
+
+/**
+ * @def WINT_MAX
+ * @brief Maximum value for a wide character type used in character functions.
+ */
+#define WINT_MAX INT32_MAX
+
 #endif // __CILIBC__STANDARD_INTEGER__
