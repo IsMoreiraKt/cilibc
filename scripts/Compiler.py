@@ -52,6 +52,8 @@ class CCompiler:
             "-fno-builtin",
             "-fno-stack-protector",
             "-fno-PIC",
+            "-nostdinc",
+            "-undef",
             "-Wall",
         ]
 
@@ -62,6 +64,8 @@ class CCompiler:
             "-fno-builtin",
             "-fno-stack-protector",
             "-fno-PIC",
+            "-nostdinc",
+            "-undef",
             "-Wall",
         ]
 
