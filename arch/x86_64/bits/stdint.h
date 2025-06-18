@@ -99,4 +99,10 @@ typedef unsigned long uintptr_t;
  */
 #define PTRDIFF_MAX INT64_MAX
 
+/**
+ * @def SIZE_MAX
+ * @brief Maximum value for the size of any object.
+ */
+#define SIZE_MAX INT64_MAX
+
 #endif // __CILIBC__X86_64__STANDARD_INTEGER__
