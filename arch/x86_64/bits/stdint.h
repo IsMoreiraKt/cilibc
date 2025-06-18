@@ -3,6 +3,7 @@
  * @brief Defines integer types for x86_64 architecture.
  *
  * Provides typedefs for signed and unsigned integers.
+ * Assumes LP64 data model: long == 64 bits
  *
  * @author Ismael Moreira
  */
@@ -37,19 +38,19 @@ typedef unsigned long uintptr_t;
  * @def INT64_MIN
  * @brief Minimum value for a signed 64-bit integer.
  */
-#define INT64_MIN (-0x8000000000000000L)
+#define INT64_MIN ((int64_t)-0x8000000000000000L)
 
 /**
  * @def INT64_MAX
  * @brief Maximum value for a signed 64-bit integer.
  */
-#define INT64_MAX (0x7FFFFFFFFFFFFFFFL)
+#define INT64_MAX ((int64_t)0x7FFFFFFFFFFFFFFFL)
 
 /**
  * @def UINT64_MAX
  * @brief Maximum value for an unsigned 64-bit integer.
  */
-#define UINT64_MAX (0xFFFFFFFFFFFFFFFFUL)
+#define UINT64_MAX ((uint64_t)0xFFFFFFFFFFFFFFFFUL)
 
 /**
  * @def INTPTR_MIN
@@ -67,7 +68,7 @@ typedef unsigned long uintptr_t;
  * @def INTPTR_MAX
  * @brief Maximum value for a signed integer type capable of holding a pointer.
  */
-#define UINTPTR_MAX UINTPTR_MAX
+#define UINTPTR_MAX UINT64_MAX
 
 /**
  * @def INTMAX_MIN
@@ -103,6 +104,6 @@ typedef unsigned long uintptr_t;
  * @def SIZE_MAX
  * @brief Maximum value for the size of any object.
  */
-#define SIZE_MAX INT64_MAX
+#define SIZE_MAX UINT64_MAX
 
 #endif // __CILIBC__X86_64__STANDARD_INTEGER__

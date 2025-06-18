@@ -161,55 +161,55 @@ typedef uint64_t uint_fast64_t;
  * @def INT8_MIN
  * @brief Minimum value for a signed 8-bit integer.
  */
-#define INT8_MIN (-0x80)
+#define INT8_MIN ((int8_t)-0x80)
 
 /**
  * @def INT16_MIN
  * @brief Minimum value for a signed 16-bit integer.
  */
-#define INT16_MIN (-0x8000)
+#define INT16_MIN ((int16_t)-0x8000)
 
 /**
  * @def INT32_MIN
  * @brief Minimum value for a signed 32-bit integer.
  */
-#define INT32_MIN (-0x80000000)
+#define INT32_MIN ((int32_t)-0x80000000)
 
 /**
  * @def INT8_MAX
  * @brief Maximum value for a signed 8-bit integer.
  */
-#define INT8_MAX (0x7F)
+#define INT8_MAX ((int8_t)0x7F)
 
 /**
  * @def INT16_MAX
  * @brief Maximum value for a signed 16-bit integer.
  */
-#define INT16_MAX (0x7FFF)
+#define INT16_MAX ((int16_t)0x7FFF)
 
 /**
  * @def INT32_MAX
  * @brief Maximum value for a signed 32-bit integer.
  */
-#define INT32_MAX (0x7FFFFFFF)
+#define INT32_MAX ((int32_t)0x7FFFFFFF)
 
 /**
  * @def UINT8_MAX
  * @brief Maximum value for an unsigned 8-bit integer.
  */
-#define UINT8_MAX (0xFF)
+#define UINT8_MAX ((uint8_t)0xFF)
 
 /**
  * @def UINT16_MAX
  * @brief Maximum value for an unsigned 16-bit integer.
  */
-#define UINT16_MAX (0xFFFF)
+#define UINT16_MAX ((uint16_t)0xFFFF)
 
 /**
  * @def UINT32_MAX
  * @brief Maximum value for an unsigned 32-bit integer.
  */
-#define UINT32_MAX (0xFFFFFFFFU)
+#define UINT32_MAX ((uint32_t)0xFFFFFFFF)
 
 /**
  * @def INT_LEAST8_MIN
