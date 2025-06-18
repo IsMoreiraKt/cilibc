@@ -20,4 +20,6 @@ jobs:
           python-version: "3.11"
 
       - name: Run autobot test
-        run: python ./autobot --test crt
+        run: |
+          python ./autobot --test crt
+          python ./autobot --test stdint
