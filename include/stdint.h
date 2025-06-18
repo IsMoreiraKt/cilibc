@@ -355,4 +355,16 @@ typedef uint64_t uint_fast64_t;
  */
 #define UINT_FAST64_MAX UINT64_MAX
 
+/**
+ * @def SIG_ATOMIC_MIN
+ * @brief Minimum value for a signed integer type capable of holding a signal.
+ */
+#define SIG_ATOMIC_MIN INT32_MIN
+
+/**
+ * @def SIG_ATOMIC_MAX
+ * @brief Maximum value for a signed integer type capable of holding a signal.
+ */
+#define SIG_ATOMIC_MAX INT32_MAX
+
 #endif // __CILIBC__STANDARD_INTEGER__
