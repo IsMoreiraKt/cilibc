@@ -39,7 +39,6 @@ class CCompiler:
             "-fno-PIC",
             "-fno-ident",
             "-nostdinc",
-            "-undef",
             "-fno-asynchronous-unwind-tables",
             "-Wall",
             "-Wextra",
@@ -53,7 +52,6 @@ class CCompiler:
             "-fno-stack-protector",
             "-fno-PIC",
             "-nostdinc",
-            "-undef",
             "-Wall",
         ]
 
@@ -65,7 +63,6 @@ class CCompiler:
             "-fno-stack-protector",
             "-fno-PIC",
             "-nostdinc",
-            "-undef",
             "-Wall",
         ]
 
@@ -211,6 +208,7 @@ class CCompiler:
             cmd = [
                 context.compiler,
                 *self.testFlags,
+                "-Iarch",
                 "-Itests",
                 str(utilFile),
                 "-o",
@@ -243,6 +241,8 @@ class CCompiler:
                     context.compiler,
                     *self.testFlags,
                     "-Itests",
+                    "-Iarch",
+                    "-Iinclude",
                     str(testFile),
                     "-o",
                     str(testObject),
