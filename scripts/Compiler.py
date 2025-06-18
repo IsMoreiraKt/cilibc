@@ -38,6 +38,8 @@ class CCompiler:
             "-fno-stack-protector",
             "-fno-PIC",
             "-fno-ident",
+            "-nostdinc",
+            "-undef",
             "-fno-asynchronous-unwind-tables",
             "-Wall",
             "-Wextra",
