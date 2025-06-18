@@ -12,41 +12,58 @@ import os
 
 
 class TestStdint(unittest.TestCase):
-  """
-  Unit tests for cilibc standard integer types.
-  """
-
-  def testInt8Min(self):
     """
-    Test that int8_t is -128.
+    Unit tests for cilibc standard integer types.
     """
-    result: CompletedProcess = run(
-        ["__build/test/int8min"], capture_output=True, text=True
-    )
 
-    stdout: Any = result.stdout
-    stderr: Any = result.stderr
-    exitCode: int = result.returncode
+    def testInt8Min(self):
+        """
+        Test that int8_t is -128.
+        """
+        result: CompletedProcess = run(
+            ["__build/test/int8min"], capture_output=True, text=True
+        )
 
-    self.assertEqual(exitCode, 0)
-    self.assertEqual(stdout.strip(), "")
-    self.assertEqual(stderr, "")
+        stdout: Any = result.stdout
+        stderr: Any = result.stderr
+        exitCode: int = result.returncode
 
-  def testInt8Max(self):
-    """
-    Test that int8_t is 127.
-    """
-    result: CompletedProcess = run(
-        ["__build/test/int8max"], capture_output=True, text=True
-    )
+        self.assertEqual(exitCode, 0)
+        self.assertEqual(stdout.strip(), "")
+        self.assertEqual(stderr, "")
 
-    stdout: Any = result.stdout
-    stderr: Any = result.stderr
-    exitCode: int = result.returncode
+    def testInt8Max(self):
+        """
+        Test that int8_t is 127.
+        """
+        result: CompletedProcess = run(
+            ["__build/test/int8max"], capture_output=True, text=True
+        )
 
-    self.assertEqual(exitCode, 0)
-    self.assertEqual(stdout.strip(), "")
-    self.assertEqual(stderr, "")
+        stdout: Any = result.stdout
+        stderr: Any = result.stderr
+        exitCode: int = result.returncode
+
+        self.assertEqual(exitCode, 0)
+        self.assertEqual(stdout.strip(), "")
+        self.assertEqual(stderr, "")
+
+    def testInt16Min(self):
+        """
+        Test that int16_t is -32768.
+        """
+        result: CompletedProcess = run(
+            ["__build/test/int16min"], capture_output=True, text=True
+        )
+
+        stdout: Any = result.stdout
+        stderr: Any = result.stderr
+        exitCode: int = result.returncode
+
+        self.assertEqual(exitCode, 0)
+        self.assertEqual(stdout.strip(), "")
+        self.assertEqual(stderr, "")
+
 
 if __name__ == "__main__":
     unittest.main()
