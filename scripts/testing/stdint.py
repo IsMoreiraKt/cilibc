@@ -528,6 +528,22 @@ class TestStdint(unittest.TestCase):
         self.assertEqual(stdout.strip(), "")
         self.assertEqual(stderr, "")
 
+    def testUIntFast8Max(self):
+        """
+        Test that UINT_FAST8_MAX is 255.
+        """
+        result: CompletedProcess = run(
+            ["__build/test/uintfast8max"], capture_output=True, text=True
+        )
+
+        stdout: Any = result.stdout
+        stderr: Any = result.stderr
+        exitCode: int = result.returncode
+
+        self.assertEqual(exitCode, 0)
+        self.assertEqual(stdout.strip(), "")
+        self.assertEqual(stderr, "")
+
 
 if __name__ == "__main__":
     unittest.main()
