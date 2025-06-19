@@ -176,6 +176,12 @@ typedef uint64_t uint_fast64_t;
 #define INT32_MIN ((int32_t)-0x80000000)
 
 /**
+ * @def INT64_MIN
+ * @brief Minimum value for a signed 64-bit integer.
+ */
+#define INT64_MIN ((int64_t)-0x8000000000000000L)
+
+/**
  * @def INT8_MAX
  * @brief Maximum value for a signed 8-bit integer.
  */
@@ -194,6 +200,12 @@ typedef uint64_t uint_fast64_t;
 #define INT32_MAX ((int32_t)0x7FFFFFFF)
 
 /**
+ * @def INT64_MAX
+ * @brief Maximum value for a signed 64-bit integer.
+ */
+#define INT64_MAX ((int64_t)0x7FFFFFFFFFFFFFFFL)
+
+/**
  * @def UINT8_MAX
  * @brief Maximum value for an unsigned 8-bit integer.
  */
@@ -210,6 +222,12 @@ typedef uint64_t uint_fast64_t;
  * @brief Maximum value for an unsigned 32-bit integer.
  */
 #define UINT32_MAX ((uint32_t)0xFFFFFFFF)
+
+/**
+ * @def UINT64_MAX
+ * @brief Maximum value for an unsigned 64-bit integer.
+ */
+#define UINT64_MAX ((uint64_t)0xFFFFFFFFFFFFFFFFUL)
 
 /**
  * @def INT_LEAST8_MIN
@@ -356,6 +374,54 @@ typedef uint64_t uint_fast64_t;
 #define UINT_FAST64_MAX UINT64_MAX
 
 /**
+ * @def INTMAX_MIN
+ * @brief Minimum value for the largest supported signed integer type.
+ */
+#define INTMAX_MIN INT64_MIN
+
+/**
+ * @def INTMAX_MAX
+ * @brief Maximum value for the largest supported signed integer type.
+ */
+#define INTMAX_MAX INT64_MAX
+
+/**
+ * @def UINTMAX_MAX
+ * @brief Maximum value for the largest supported unsigned integer type.
+ */
+#define UINTMAX_MAX UINT64_MAX
+
+/**
+ * @def INTPTR_MIN
+ * @brief Minimum value for a signed integer type capable of holding a pointer.
+ */
+#define INTPTR_MIN INT64_MIN
+
+/**
+ * @def INTPTR_MAX
+ * @brief Maximum value for a signed integer type capable of holding a pointer.
+ */
+#define INTPTR_MAX INT64_MAX
+
+/**
+ * @def INTPTR_MAX
+ * @brief Maximum value for a signed integer type capable of holding a pointer.
+ */
+#define UINTPTR_MAX UINT64_MAX
+
+/**
+ * @def PTRDIFF_MIN
+ * @brief Minimum value for the result of subtracting two pointers.
+ */
+#define PTRDIFF_MIN INT64_MIN
+
+/**
+ * @def PTRDIFF_MAX
+ * @brief Maximum value for the result of subtracting two pointers.
+ */
+#define PTRDIFF_MAX INT64_MAX
+
+/**
  * @def SIG_ATOMIC_MIN
  * @brief Minimum value for a signed integer type capable of holding a signal.
  */
@@ -366,6 +432,12 @@ typedef uint64_t uint_fast64_t;
  * @brief Maximum value for a signed integer type capable of holding a signal.
  */
 #define SIG_ATOMIC_MAX INT32_MAX
+
+/**
+ * @def SIZE_MAX
+ * @brief Maximum value for the size of any object.
+ */
+#define SIZE_MAX UINT64_MAX
 
 /**
  * @def WCHAR_MIN
