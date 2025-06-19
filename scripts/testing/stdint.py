@@ -160,6 +160,22 @@ class TestStdint(unittest.TestCase):
         self.assertEqual(stdout.strip(), "")
         self.assertEqual(stderr, "")
 
+    def testUInt16Max(self):
+        """
+        Test that uint16_t is 65535.
+        """
+        result: CompletedProcess = run(
+            ["__build/test/uint16max"], capture_output=True, text=True
+        )
+
+        stdout: Any = result.stdout
+        stderr: Any = result.stderr
+        exitCode: int = result.returncode
+
+        self.assertEqual(exitCode, 0)
+        self.assertEqual(stdout.strip(), "")
+        self.assertEqual(stderr, "")
+
 
 if __name__ == "__main__":
     unittest.main()
