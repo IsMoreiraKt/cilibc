@@ -20,7 +20,7 @@
  *
  * @return int Returns 0 on success, 1 on failure.
  */
-int main()
+int main(void)
 {
     int_least32_t test_value = -2147483648;
 

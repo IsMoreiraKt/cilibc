@@ -20,7 +20,7 @@
  *
  * @return int Returns 0 on success, 1 on failure.
  */
-int main()
+int main(void)
 {
     uint64_t test_value = 18446744073709551615;
 

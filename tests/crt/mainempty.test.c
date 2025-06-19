@@ -17,7 +17,7 @@
  *
  * @return int Always returns 0.
  */
-int main()
+int main(void)
 {
     return 0;
 }

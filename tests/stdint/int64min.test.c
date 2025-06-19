@@ -20,7 +20,7 @@
  *
  * @return int Returns 0 on success, 1 on failure.
  */
-int main()
+int main(void)
 {
     int64_t test_value = -9223372036854775808;
 
