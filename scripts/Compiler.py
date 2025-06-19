@@ -187,10 +187,11 @@ class CCompiler:
 
     def compileTests(self, context: BuildContext) -> None:
         """
-        Compile all test source files and test utilities.
+        Compile and link all test suites and test utilities.
 
-        - Compiles all tests/*.c files (utility code) to .o in __build/test with -Itests.
-        - For each directory in context.testList, compiles all *.test.c files to .o in __build/test with -Itests.
+        - Compiles all C source files in the 'tests' directory as test utilities.
+        - Compiles all '*.test.c' files in each test suite directory specified in context.testList.
+        - Links each test object with the utility objects to produce test binaries.
 
         Args:
             context (BuildContext): The build context for configuration and logging.
@@ -230,12 +231,11 @@ class CCompiler:
 
         for testDir in testDirs:
             testDirPath: Path = Path("tests") / testDir
-            testFiles: List[Path] = list(testDirPath.glob("*.test.c"))
+            testFiles: List[Path] = list(testDirPath.rglob("*.test.c"))
 
             for testFile in testFiles:
-                testObject: Path = testBuildDir / (
-                    testFile.stem.replace(".test", "") + ".o"
-                )
+                binaryName = testFile.stem.replace(".test", "")
+                testObject: Path = testBuildDir / (binaryName + ".o")
 
                 cmd = [
                     context.compiler,
@@ -256,9 +256,7 @@ class CCompiler:
 
                 objectsForLink: List[Path] = utilityObjects + [testObject]
 
-                testOutputBinary: str = str(
-                    testBuildDir / testFile.stem.replace(".test", "")
-                )
+                testOutputBinary: str = str(testBuildDir / binaryName)
                 self.linkTest(context, testOutputBinary, objectsForLink)
 
     def link(self, context: BuildContext, output: str) -> None:
