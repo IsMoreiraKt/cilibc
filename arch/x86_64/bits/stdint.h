@@ -50,8 +50,8 @@ typedef unsigned long uintptr_t;
 #define INTPTR_MAX ((int64_t)0x7FFFFFFFFFFFFFFFL)
 
 /**
- * @def INTPTR_MAX
- * @brief Maximum value for a signed integer type capable of holding a pointer.
+ * @def UINTPTR_MAX
+ * @brief Maximum value for an unsigned integer type capable of holding a pointer.
  */
 #define UINTPTR_MAX ((uint64_t)0xFFFFFFFFFFFFFFFFUL)
 
