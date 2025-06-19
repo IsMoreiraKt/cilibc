@@ -395,36 +395,6 @@ typedef uint64_t uint_fast64_t;
 #define UINTMAX_MAX UINT64_MAX
 
 /**
- * @def INTPTR_MIN
- * @brief Minimum value for a signed integer type capable of holding a pointer.
- */
-#define INTPTR_MIN INT64_MIN
-
-/**
- * @def INTPTR_MAX
- * @brief Maximum value for a signed integer type capable of holding a pointer.
- */
-#define INTPTR_MAX INT64_MAX
-
-/**
- * @def INTPTR_MAX
- * @brief Maximum value for a signed integer type capable of holding a pointer.
- */
-#define UINTPTR_MAX UINT64_MAX
-
-/**
- * @def PTRDIFF_MIN
- * @brief Minimum value for the result of subtracting two pointers.
- */
-#define PTRDIFF_MIN INT64_MIN
-
-/**
- * @def PTRDIFF_MAX
- * @brief Maximum value for the result of subtracting two pointers.
- */
-#define PTRDIFF_MAX INT64_MAX
-
-/**
  * @def SIG_ATOMIC_MIN
  * @brief Minimum value for a signed integer type capable of holding a signal.
  */
@@ -435,12 +405,6 @@ typedef uint64_t uint_fast64_t;
  * @brief Maximum value for a signed integer type capable of holding a signal.
  */
 #define SIG_ATOMIC_MAX INT32_MAX
-
-/**
- * @def SIZE_MAX
- * @brief Maximum value for the size of any object.
- */
-#define SIZE_MAX UINT64_MAX
 
 /**
  * @def WCHAR_MIN
