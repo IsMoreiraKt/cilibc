@@ -512,6 +512,22 @@ class TestStdint(unittest.TestCase):
         self.assertEqual(stdout.strip(), "")
         self.assertEqual(stderr, "")
 
+    def testIntFast64Max(self):
+        """
+        Test that INT_FAST64_MAX is 9223372036854775807.
+        """
+        result: CompletedProcess = run(
+            ["__build/test/intfast64max"], capture_output=True, text=True
+        )
+
+        stdout: Any = result.stdout
+        stderr: Any = result.stderr
+        exitCode: int = result.returncode
+
+        self.assertEqual(exitCode, 0)
+        self.assertEqual(stdout.strip(), "")
+        self.assertEqual(stderr, "")
+
 
 if __name__ == "__main__":
     unittest.main()
