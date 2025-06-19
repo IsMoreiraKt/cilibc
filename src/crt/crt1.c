@@ -4,6 +4,10 @@
  * This file contains the entry point for the C runtime, which initializes
  * the environment and calls the main function.
  *
+ * @see arch/x86_64/crt/crti.S
+ * @see arch/x86_64/crt/crt1.S
+ * @see arch/x86_64/crt/crtn.S
+ *
  * @author Ismael Moreira
  */
 
