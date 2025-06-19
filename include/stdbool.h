@@ -19,4 +19,21 @@
  */
 typedef _Bool bool;
 
+
+/**
+ * @def true
+ * @brief Boolean true value.
+ * 
+ * Represents the true value in boolean expressions.
+ */
+#define true 1
+
+/**
+ * @def false
+ * @brief Boolean false value.
+ * 
+ * Represents the false value in boolean expressions.
+ */
+#define false 0
+
 #endif // __CILIBC__STANDARD_BOOLEAN__
