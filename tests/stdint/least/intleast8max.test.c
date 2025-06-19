@@ -1,15 +1,18 @@
 /**
- * @file tests/stdint/intleast8max.test.c
+ * @file tests/stdint/least/intleast8max.test.c
  * @brief Test for INT_LEAST8_MAX.
  *
  * This test checks that the INT_LEAST8_MAX macro is defined correctly
  * and that it equals 127, which is the maximum value for a signed
  * 8-bit integer.
  *
+ * @see https://pubs.opengroup.org/onlinepubs/9799919799/
+ * @see include/stdint.h
+ * @see arch/__your_arch__/bits/stdint.h
+ *
  * @author Ismael Moreira
  */
 #include "stdint.h"
-#include "tests.h"
 
 /**
  * @brief Main function to test INT_LEAST8_MAX.

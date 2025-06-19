@@ -1,15 +1,18 @@
 /**
- * @file tests/stdint/intfast64min.test.c
+ * @file tests/stdint/fast/intfast64min.test.c
  * @brief Test for the int_fast64_t minimum value.
  *
  * This test checks that the INT_FAST64_MIN macro is defined correctly
  * and that it equals -9223372036854775808, which is the minimum value
  * for a signed 64-bit integer.
  *
+ * @see https://pubs.opengroup.org/onlinepubs/9799919799/
+ * @see include/stdint.h
+ * @see arch/__your_arch__/bits/stdint.h
+ *
  * @author Ismael Moreira
  */
 #include "stdint.h"
-#include "tests.h"
 
 /**
  * @brief Main function to test INT_FAST64_MIN.

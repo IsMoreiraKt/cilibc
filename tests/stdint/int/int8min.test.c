@@ -1,14 +1,17 @@
 /**
- * @file tests/stdint/int8_min.test.c
+ * @file tests/stdint/int/int8min.test.c
  * @brief Test for INT8_MIN.
  *
  * This test checks that the INT8_MIN macro is defined correctly
  * and that it equals -128, which is the minimum value for an 8-bit signed integer.
  *
+ * @see https://pubs.opengroup.org/onlinepubs/9799919799/
+ * @see include/stdint.h
+ * @see arch/__your_arch__/bits/stdint.h
+ *
  * @author Ismael Moreira
  */
 #include "stdint.h"
-#include "tests.h"
 
 /**
  * @brief Main function to test INT8_MIN.

@@ -3,6 +3,11 @@
  * Author: Ismael Moreira
  * Purpose: Entry point for x86_64 ELF binaries.
  *
+ * See: https://refspecs.linuxbase.org/elf/x86_64-abi-0.99.pdf
+ * See: arch/x86_64/crt/crti.S
+ * See: arch/x86_64/crt/crtn.S
+ * See: src/crt/crt1.c
+ *
  * Stack layout at entry:
  *   [rsp + 0x00]: argc (int)
  *   [rsp + 0x08]: argv[0] (char *)

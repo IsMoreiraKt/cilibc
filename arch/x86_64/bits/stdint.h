@@ -5,6 +5,9 @@
  * Provides typedefs for signed and unsigned integers.
  * Assumes LP64 data model: long == 64 bits
  *
+ * @see https://pubs.opengroup.org/onlinepubs/9799919799/
+ * @see include/stdint.h
+ *
  * @author Ismael Moreira
  */
 #ifndef __CILIBC__X86_64__STANDARD_INTEGER__

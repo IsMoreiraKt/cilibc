@@ -1,15 +1,18 @@
 /**
- * @file tests/stdint/uintleast32max.test.c
+ * @file tests/stdint/least/uintleast32max.test.c
  * @brief Test for UINT_LEAST32_MAX.
  *
  * This test checks that the UINT_LEAST32_MAX macro is defined correctly
  * and that it equals 4294967295, which is the maximum value for an unsigned
  * 32-bit integer.
  *
+ * @see https://pubs.opengroup.org/onlinepubs/9799919799/
+ * @see include/stdint.h
+ * @see arch/__your_arch__/bits/stdint.h
+ *
  * @author Ismael Moreira
  */
 #include "stdint.h"
-#include "tests.h"
 
 /**
  * @brief Main function to test UINT_LEAST32_MAX.

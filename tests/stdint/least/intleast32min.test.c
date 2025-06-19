@@ -1,15 +1,18 @@
 /**
- * @file tests/stdint/intleast32min.test.c
+ * @file tests/stdint/least/intleast32min.test.c
  * @brief Test for INT_LEAST32_MIN.
  *
  * This test checks that the INT_LEAST32_MIN macro is defined correctly
  * and that it equals -2147483648, which is the minimum value for a signed
  * 32-bit integer.
  *
+ * @see https://pubs.opengroup.org/onlinepubs/9799919799/
+ * @see include/stdint.h
+ * @see arch/__your_arch__/bits/stdint.h
+ *
  * @author Ismael Moreira
  */
 #include "stdint.h"
-#include "tests.h"
 
 /**
  * @brief Main function to test INT_LEAST32_MIN.

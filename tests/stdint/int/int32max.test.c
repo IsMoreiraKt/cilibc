@@ -1,15 +1,18 @@
 /**
- * @file tests/stdint/int32max.test.c
+ * @file tests/stdint/int/int32max.test.c
  * @brief Test for INT32_MAX.
  *
  * This test checks that the INT32_MAX macro is defined correctly
  * and that it equals 2147483647, which is the maximum value for a
  * 32-bit signed integer.
  *
+ * @see https://pubs.opengroup.org/onlinepubs/9799919799/
+ * @see include/stdint.h
+ * @see arch/__your_arch__/bits/stdint.h
+ *
  * @author Ismael Moreira
  */
 #include "stdint.h"
-#include "tests.h"
 
 /**
  * @brief Main function to test INT32_MAX.

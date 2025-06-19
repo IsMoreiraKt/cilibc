@@ -1,15 +1,18 @@
 /**
- * @file tests/stdint/uint8max.test.c
+ * @file tests/stdint/int/uint8max.test.c
  * @brief Test for UINT8_MAX.
  *
  * This test checks that the UINT8_MAX macro is defined correctly
  * and that it equals 255, which is the maximum value for an 8-bit unsigned
  * integer.
  *
+ * @see https://pubs.opengroup.org/onlinepubs/9799919799/
+ * @see include/stdint.h
+ * @see arch/__your_arch__/bits/stdint.h
+ *
  * @author Ismael Moreira
  */
 #include "stdint.h"
-#include "tests.h"
 
 /**
  * @brief Main function to test UINT8_MAX.

@@ -1,15 +1,18 @@
 /**
- * @file tests/stdint/uint16max.test.c
+ * @file tests/stdint/int/uint16max.test.c
  * @brief Test for UINT16_MAX.
  *
  * This test checks that the UINT16_MAX macro is defined correctly
  * and that it equals 65535, which is the maximum value for a 16-bit
  * unsigned integer.
  *
+ * @see https://pubs.opengroup.org/onlinepubs/9799919799/
+ * @see include/stdint.h
+ * @see arch/__your_arch__/bits/stdint.h
+ *
  * @author Ismael Moreira
  */
 #include "stdint.h"
-#include "tests.h"
 
 /**
  * @brief Main function to test UINT16_MAX.

@@ -4,6 +4,9 @@
  *
  * Defines integer types for the CILibc.
  *
+ * @see https://pubs.opengroup.org/onlinepubs/9799919799/
+ * @see arch/__your_arch__/bits/stdint.h
+ *
  * @author Ismael Moreira
  */
 #ifndef __CILIBC__STANDARD_INTEGER__
