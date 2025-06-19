@@ -32,6 +32,22 @@ class TestStdBool(unittest.TestCase):
         self.assertEqual(stdout.strip(), "")
         self.assertEqual(stderr, "")
 
+    def testBoolTrueFalseAreDefined(self):
+        """
+        Test that the macro __bool_true_false_are_defined is well defined.
+        """
+        result: CompletedProcess = run(
+            ["__build/test/booltruefalsearedefined"], capture_output=True, text=True
+        )
+
+        stdout: Any = result.stdout
+        stderr: Any = result.stderr
+        exitCode: int = result.returncode
+
+        self.assertEqual(exitCode, 0)
+        self.assertEqual(stdout.strip(), "")
+        self.assertEqual(stderr, "")
+
 
 if __name__ == "__main__":
     unittest.main()
