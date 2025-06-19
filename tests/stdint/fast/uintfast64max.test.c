@@ -25,7 +25,7 @@
  */
 int main(void)
 {
-    uint_fast64_t test_value = 18446744073709551615ULL;
+    uint_fast64_t test_value = 18446744073709551615;
 
     if (UINT_FAST64_MAX != test_value)
         return 1;
