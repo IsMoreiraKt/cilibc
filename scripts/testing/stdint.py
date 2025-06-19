@@ -272,6 +272,22 @@ class TestStdint(unittest.TestCase):
         self.assertEqual(stdout.strip(), "")
         self.assertEqual(stderr, "")
 
+    def testIntLeast8Max(self):
+        """
+        Test that INT_LEAST8_MAX is 127.
+        """
+        result: CompletedProcess = run(
+            ["__build/test/intleast8max"], capture_output=True, text=True
+        )
+
+        stdout: Any = result.stdout
+        stderr: Any = result.stderr
+        exitCode: int = result.returncode
+
+        self.assertEqual(exitCode, 0)
+        self.assertEqual(stdout.strip(), "")
+        self.assertEqual(stderr, "")
+
 
 if __name__ == "__main__":
     unittest.main()
