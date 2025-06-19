@@ -22,7 +22,7 @@
  */
 int main()
 {
-    int16_t test_value = -32768;
+    int_least16_t test_value = -32768;
 
     if (INT_LEAST16_MIN != test_value)
         return 1;

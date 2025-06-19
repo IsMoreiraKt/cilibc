@@ -22,7 +22,7 @@
  */
 int main()
 {
-    int8_t test_value = -128;
+    int_least8_t test_value = -128;
 
     if (INT_LEAST8_MIN != test_value)
         return 1;

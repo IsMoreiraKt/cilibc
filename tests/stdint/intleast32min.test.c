@@ -22,7 +22,7 @@
  */
 int main()
 {
-    int32_t test_value = -2147483648;
+    int_least32_t test_value = -2147483648;
 
     if (INT_LEAST32_MIN != test_value)
         return 1;

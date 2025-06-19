@@ -22,7 +22,7 @@
  */
 int main()
 {
-    int64_t test_value = -9223372036854775808;
+    int_least64_t test_value = -9223372036854775808;
 
     if (INT_LEAST64_MIN != test_value)
         return 1;
