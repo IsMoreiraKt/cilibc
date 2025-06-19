@@ -29,13 +29,19 @@ typedef unsigned long _Uint64;
  * @typedef intptr_t
  * @brief Signed integer type capable of holding a pointer.
  */
-typedef signed long intptr_t;
+typedef _Int64 intptr_t;
 
 /**
  * @typedef uintptr_t
  * @brief Unsigned integer type capable of holding a pointer.
  */
-typedef unsigned long uintptr_t;
+typedef _Uint64 uintptr_t;
+
+/**
+ * @typedef ptrdiff_t
+ * @brief Signed integer type for the result of subtracting two pointers.
+ */
+typedef _Int64 ptrdiff_t;
 
 /**
  * @def INTPTR_MIN
