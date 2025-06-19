@@ -161,6 +161,18 @@ typedef uint32_t uint_fast32_t;
 typedef uint64_t uint_fast64_t;
 
 /**
+ * @typedef intmax_t
+ * @brief Largest supported signed integer type.
+ */
+typedef _Int64 intmax_t;
+
+/**
+ * @typedef uintmax_t
+ * @brief Largest supported unsigned integer type.
+ */
+typedef _Uint64 uintmax_t;
+
+/**
  * @def INT8_MIN
  * @brief Minimum value for a signed 8-bit integer.
  */
