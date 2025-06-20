@@ -24,3 +24,4 @@ jobs:
           python ./autobot --test crt
           python ./autobot --test stdint
           python ./autobot --test stdbool
+          python ./autobot --test stddef
