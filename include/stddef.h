@@ -71,6 +71,6 @@ typedef int16_t wchar_t;
  * @return The offset of the member in bytes.
  */
 #define offsetof(type, member) \
-    ((size_t)((uintptr_t) & (((type*)0)->member) - (uintptr_t)(type*)0))
+    ((size_t)((uintptr_t) & (((type*)0)->member) - (uintptr_t)((type*)0)))
 
 #endif // __CILIBC__STANDARD_DEFINITIONS__
