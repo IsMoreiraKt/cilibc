@@ -8,10 +8,12 @@
  *
  * @see https://pubs.opengroup.org/onlinepubs/9799919799/
  * @see include/stdint.h
+ * @see include/stddef.h
  * @see arch/__your_arch__/bits/stdint.h
  *
  * @author Ismael Moreira
  */
+#include "stddef.h"
 #include "stdint.h"
 
 /**

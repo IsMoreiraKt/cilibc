@@ -38,12 +38,6 @@ typedef _Int64 intptr_t;
 typedef _Uint64 uintptr_t;
 
 /**
- * @typedef ptrdiff_t
- * @brief Signed integer type for the result of subtracting two pointers.
- */
-typedef _Int64 ptrdiff_t;
-
-/**
  * @def INTPTR_MIN
  * @brief Minimum value for a signed integer type capable of holding a pointer.
  */
