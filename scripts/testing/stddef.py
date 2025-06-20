@@ -48,6 +48,22 @@ class TestStdDef(unittest.TestCase):
         self.assertEqual(stdout.strip(), "")
         self.assertEqual(stderr, "")
 
+    def testNullCondition(self):
+        """
+        Test that NULL evaluates as false in a conditional expression.
+        """
+        result: CompletedProcess = run(
+            ["__build/test/nullcondition"], capture_output=True, text=True
+        )
+
+        stdout: Any = result.stdout
+        stderr: Any = result.stderr
+        exitCode: int = result.returncode
+
+        self.assertEqual(exitCode, 0)
+        self.assertEqual(stdout.strip(), "")
+        self.assertEqual(stderr, "")
+
 
 if __name__ == "__main__":
     unittest.main()
