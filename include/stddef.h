@@ -24,13 +24,13 @@
  * @def NULL
  * @brief Null pointer constant.
  */
-#define NULL (nullptr)
+#define NULL nullptr
 #elif defined(__cplusplus)
 /**
  * @def NULL
  * @brief Null pointer constant.
  */
-#define NULL (0L)
+#define NULL 0L
 #else // C
 /**
  * @def NULL
@@ -38,6 +38,28 @@
  */
 #define NULL ((void*)0)
 #endif // C
+
+#ifndef __cplusplus
+#if defined(__STDC_MB_MIGHT_NEQ_WC__)
+/**
+ * @typedef wchar_t
+ * @brief Wide character type.
+ *
+ * This type is used to represent wide characters in C.
+ * It is defined as a 32-bit unsigned integer.
+ */
+typedef int32_t wchar_t;
+#else
+/**
+ * @typedef wchar_t
+ * @brief Wide character type.
+ *
+ * This type is used to represent wide characters in C.
+ * It is defined as an 16-bit unsigned integer.
+ */
+typedef int16_t wchar_t;
+#endif // defined(__STDC_MB_MIGHT_NEQ_WC__)
+#endif // __cplusplus
 
 /**
  * @def offsetof

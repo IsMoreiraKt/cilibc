@@ -1,14 +1,14 @@
 /**
  * @file arch/x86_64/bits/stddef.h
  * @brief Standard definitions for x86_64 architecture.
- * 
+ *
  * This header file provides standard definitions and types used in CILibc
  * for the x86_64 architecture. It includes definitions for size_t, ptrdiff_t
  * and other standard types.
- * 
+ *
  * @see https://pubs.opengroup.org/onlinepubs/9799919799/
  * @see include/stddef.h
- * 
+ *
  * @author Ismael Moreira
  */
 #ifndef __CILIBC__X86_64__STANDARD_DEFINITIONS__
@@ -25,7 +25,7 @@ typedef _Int64 ptrdiff_t;
 /**
  * @typedef size_t
  * @brief Unsigned integer type for the size of an object.
- * 
+ *
  * This type is used to represent the size of objects in bytes.
  */
 typedef _Uint64 size_t;
