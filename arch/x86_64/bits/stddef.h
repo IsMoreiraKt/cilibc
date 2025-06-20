@@ -22,4 +22,12 @@
  */
 typedef _Int64 ptrdiff_t;
 
+/**
+ * @typedef size_t
+ * @brief Unsigned integer type for the size of an object.
+ * 
+ * This type is used to represent the size of objects in bytes.
+ */
+typedef _Uint64 size_t;
+
 #endif // __CILIBC__X86_64__STANDARD_DEFINITIONS__
