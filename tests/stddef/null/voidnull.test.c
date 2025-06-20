@@ -24,7 +24,7 @@
  */
 int main(void)
 {
-    void* ptr = (void*) 0;
+    void* ptr = (void*)0;
 
     if (ptr != NULL)
         return 1;
