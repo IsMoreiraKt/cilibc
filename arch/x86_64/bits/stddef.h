@@ -20,14 +20,21 @@
  * @typedef ptrdiff_t
  * @brief Signed integer type for the result of subtracting two pointers.
  */
-typedef _Int64 ptrdiff_t;
+typedef int64_t ptrdiff_t;
 
 /**
  * @typedef size_t
  * @brief Unsigned integer type for the size of an object.
- *
- * This type is used to represent the size of objects in bytes.
  */
-typedef _Uint64 size_t;
+typedef uint64_t size_t;
+
+/**
+ * @typedef max_align_t
+ * @brief Type for maximum alignment.
+ */
+typedef struct {
+    uint64_t align_int64;
+    long double align_long_double;
+} max_align_t;
 
 #endif // __CILIBC__X86_64__STANDARD_DEFINITIONS__
